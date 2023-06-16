@@ -1,0 +1,1514 @@
+// Сделать из числа повтор и переворот 125 = 521125
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	long int a, d=1, c, s = 0;
+	cout << "Введи целое число ";
+	cin >> a;
+	c = a;
+	a *= 10;
+	while (a /= 10) 
+	
+	{
+		d *= 10;
+		s = s * 10 + a % 10;
+	}
+	cout << (c+=d*s);
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Удалить из числа указанную цифру
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	long int a, b, c, s = 0, k = 1;
+	cout << "Введите число и цифру ";
+	cin >> a >> b;
+	a *= 10;
+	while (a /= 10)
+		((c = a % 10) != b) ? (s += c * k, k *= 10) : (0);
+	cout << s;
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Поменять местами первую и последнюю цифры числа
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	long int a,b,d,k=1;
+	cout<<"Введите число ";
+	cin>>a;
+	b=a%10;
+	d=a=a/10;
+	while(a>9)
+	{
+		k*=10;
+		a/=10;
+	}
+	a+=(b*k+d%k)*10;
+	cout<<a;
+    return 0;
+}_______________________________________________________________________________________________________
+
+
+// Формирование из цифр числа максимального
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	long int a, b, s = 0, k = 1, c, s1=0;
+	cout << "\nВведи число    ";
+	cin >> a;
+	for (int i = 0, b = a * 10;i < 10;b = a * 10, i++)
+		while (b /= 10)
+			((c = b % 10) == i) ? (s += k * c, s1 = s1 * 10 + c, k *= 10) : (0);
+	
+	cout << s << "	" << s1;
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Вывод указанного кол-ва чисел Фибоначчи
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	long int  b = 1, c = 1, a;
+	cout << "\nВведите кол-во чисел: ";
+	cin >> a;
+	cout << b;
+	while (--a)
+	{
+		cout << " " << b;
+		b += c;
+		c = b - c;
+	}
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	long int a, s = 0, b = 1;
+	cout << "Введи число ";
+	cin >> a;
+	a *= 10;
+	while (a /= 10)
+	{
+		s += (a % 10) * b;
+		b *= 2;
+	}
+	cout << s;
+	return 0;
+}_______________________________________________________________________________________________________
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian"); // обеспечит вывод кириллицей 866
+	long int a, b = 2;
+
+	cout << "Введи число ";
+
+cin >> a;
+while (b <=a/2)
+(a % b == 0) ? (cout  << b << "	", ++b) : (++b);
+
+return 0;
+
+}
+_______________________________________________________________________________________________________
+
+// Программа анализа числа на ПРОСТОТУ
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int a, i, k = 0;
+	cout << "\nВведите анализируемое число ";
+	cin >> a;
+	for (i = 2; i <= a / 2; i++)
+		if (a % i == 0) k = 1;
+	if (k == 1)
+		cout << "Составное ";
+	else cout << "Простое ";
+	return 0;
+}_______________________________________________________________________________________________________
+
+// Программа вычисляет составные числа в промежутке между двух введённых
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int a, b, i, k = 0;
+	cout << "\nВведите два числа";
+	cin >> a>>b;
+	a--;
+	while (++a <= b)
+	{
+		for (i = 2, k = 0; i <= a / 2; i++)
+			if (a % i == 0) k = 1;
+		if (k == 1)
+			cout << a<<"  ";
+	}
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Программа вычисляет в заданном диапазоне число с  максимальной суммой делителей.
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int a, b, i, sum, max=0, max_num;
+	cout << "\nВведите два числа  ";
+	cin >> a>>b;
+	a--;
+	while (++a <= b)
+	{
+		for (i = 2, sum = 0; i <= a / 2; i++)
+			if (a % i == 0) sum += i; //складываем все делители очередного a
+
+		if (sum > max) max = sum, max_num = a;
+	}
+	
+	cout << "\n" << max << "  " << max_num;
+	
+
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Программа определения в заданном диапазоне чисел такого,
+// которое имеет наибольшую сумму делителей.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	long a, b, c, s, i, d, max;
+	cout << "\nВведите анализируемый диапазон чисел ";
+	cin >> a >> b;
+	for (max = -1, c = a; c <= b; (s>max) ? (max = s, i = c++) : c++)
+		for (s = 0, d = 2; d <= c / 2; (!(c%d)) ? (s += d++) : d++);
+	cout << "\nсумма=" << max << " число=" << i;
+	return 0;
+}
+_______________________________________________________________________________________________________
+// Заполнение массива через ГСЧ и переворот его половинок
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	setlocale(LC_ALL, "Russian");
+	int f[20], i, n, j, l;
+	srand((unsigned)time(&t));
+	cout << "Введите размерность массива:";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << "\nИсходный массив\n";
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	// переворот половинок массива
+	for (i = 0, l = (n + 1) / 2, j = n / 2 - 1; i < j; i++, j--)
+	{
+		swap(f[i], f[j]);
+		swap(f[i + l], f[j + l]);
+	}
+	cout << "\nПреобразованный массив\n";
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	return(0);
+}
+
+_______________________________________________________________________________________________________
+
+// удалить из массива все отрицательные элементы
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	int f[20], i, n, j = -1;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	cout << "\nВведите размер массива ";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << ("\nИсходный массив\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	// удаление отрицательных элементов массива
+	for (i = 0; i < n; i++)
+		if (f[i] >= 0) f[++j] = f[i];
+	cout << ("\nПреобразованный массив\n");
+	for (i = 0; i <=j; cout << setw(4) << f[i++]);
+	return 0;
+}
+_______________________________________________________________________________________________________
+// удалить из массива все отрицательные элементы (2 вариант, более громоздкий)
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	setlocale(LC_ALL, "Russian");
+	int f[20], i, n, j;
+	srand((unsigned)time(&t));
+	cout << "Введите размерность массива:";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << "\nИсходный массив\n";
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << "\n";
+	for (i = 0; i < n; i++)
+
+		if (f[i] < 0)
+		{
+			for (j = i; j < n - 1; j++)
+				f[j] = f[j + 1];
+			i--;
+			n--;
+		}
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+
+	return(0);
+}
+
+_______________________________________________________________________________________________________
+
+
+// Найти в массиве элементы с максимальным и минимальным значенями и поменять их местами
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	int f[20], i, n, max, min, imax, imin, k1, k2, j;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	cout << "\nВведите размер массива ";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << ("\nИсходный массив\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << ("\n");
+
+	max = f[0];
+	min = f[0];
+
+	for (int i = 0; i < n; ++i)
+	{
+		if (f[i] > max) max = f[imax=i];
+		if (f[i] < min) min = f[imin=i];
+	}
+	cout  << "\n min is " << min<< "\n";
+	cout << "max is " << max;
+	swap(f[imax], f[imin]);
+	cout << ("\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	k1 = imax;
+	k2 = imin;
+	if (imax > imin) k1=imin, k2=imax;
+
+	//for (i = k2, j = k1 + 1; i < n; i++, j++)
+	//	f[j] = f[i]; 
+
+	for (i = k2, j = k1 + 1; i < n; f[j++] = f[i++]);
+
+	n = n - k2 + k1+1;
+	cout << ("\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	return 0;
+}
+
+_______________________________________________________________________________________________________
+
+Циклическийсдвиг  массива
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void main()
+{
+
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int f[20],i,n=20, max, min, imax, imin, r, ch=2;
+	
+	// -----------ВЫВОДИМ ПЕРВОНАЧАЛЬНЫЙ МАССИВ ИЗ СЛУЧАЙНЫХ ЧИСЕЛ--------
+
+	srand((unsigned)time(&t));
+	for (i = 0; i < n; f[i++] = rand() % 100 - 50);
+	cout << ("\nПЕРВОНАЧАЛЬНЫЙ МАССИВ ИЗ СЛУЧАЙНЫХ ЧИСЕЛ\n\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << "\n";
+
+	// ----------ВЫВОДИМ МАКСИМАЛЬНОЕ И МИНИМАЛЬНОЕ ЧИСЛА------------------
+
+	max = f[0];
+	min = f[0];
+
+	for (int i = 0; i < n; ++i)
+	{
+		if (f[i] > max) max = f[imax = i];
+		if (f[i] < min) min = f[imin = i];
+	}
+	cout << "\nМИНИМАЛЬНОЕ ЧИСЛО				" << min << endl << "\n";
+	cout << "МАКСИМАЛЬНОЕ ЧИСЛО				" << max<<endl << "\n";
+
+	// ----------ДЕЛАЕМ СДВИГ И ВЫВОДИМ СДВИНУТЫЙ МАССИВ------------------
+
+	//cout << ("\nСДВИНУТЫЙ МАССИВ	\n\n");
+	//for (int j = 0; j < ch; f[n - 1] = r, j++)
+//for (i = 0, i < n; r = f[0]; f[i] = f[i + 1], i++);
+
+	//ВЫВОД НА ПЕЧАТЬ:
+//	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << "ЗНАЧЕНИЕ ЭЛЕМЕНТА СПРАВА ОТ МАКСИМАЛЬНОГО 	" << f[imax + 1] << endl;
+	f[imax + 1] = f[imax];
+	
+
+	cout << "\nВТОРИЧНЫЙ МАССИВ С ПЕРЕМЕЩЁННЫМ МАКСИМАЛЬНЫМ ЧИСЛОМ\n\n";
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << "\n";
+
+	f[imax] = {0};
+	cout << ("\nНОЛЬ СЛЕВА ОТ МАКСИМАЛЬНОГО ЧИСЛА\n\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << "\n";
+
+	f[imax+2] = { 0 };
+	cout << ("\nНОЛЬ СПРАВА ОТ МАКСИМАЛЬНОГО ЧИСЛА\n\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	cout << "\n";
+
+
+}
+_______________
+
+// Циклический сдвиг массива в любую сторону
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	time_t t;
+	int f[20], i, na=12, ns=-3, max, min, imax, imin, j, k;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	for (i = 0; i<na; f[i] = i, i++);
+	cout << ("\nИсходный массив\n");
+	for (i = 0; i<na; cout << setw(4) << f[i++]);
+	
+	//max = f[0];
+	//min = f[0];
+
+	//for (int i = 0; i < na; ++i)
+	//{
+	//	if (f[i] > max) max = f[imax = i];
+	//	if (f[i] < min) min = f[imin = i];
+	//}
+	//cout << "\n\nМИНИМАЛЬНОЕ ЧИСЛО				" << min << endl << "\n";
+	//cout << "МАКСИМАЛЬНОЕ ЧИСЛО				" << max << endl << "\n";
+	
+	if (ns < 0)ns+= na;
+	for (i = 0; i<ns;f[na-1] = j, i++)
+	 for (j = f[0],k = 0; k<na-1; f[k] = f[k + 1],k++);
+	cout << ("\nМассив со cдвигом на 4\n\n");
+	for (i = 0; i<na; cout<< setw(4) <<f[i++]);
+	
+}
+_______________________________________________________________________________________________________
+
+
+// Окружить максимальный и минимальный элемент нулями
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	int f[20], i, max = -32768, min = 32767, n, imin, imax, k1, k2, m;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	cout << "Введите размер массив  ";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; cout << setw(4) << f[i++])
+		f[i] = rand() % 100 - 50;
+	cout << " ";
+	for (i = 0; i < n; i++)
+	{
+		if (f[i] > max) max = f[imax = i];
+		if (f[i] < min) min = f[imin = i];
+	}
+	// собственно окружение экстремальных элементов нулями
+	k1 = imax;//2
+	k2 = imin;//6
+	if (imax > imin) { k2 = imax; k1 = imin; }// k1 - imax 2; k2 - imin 6
+	for (i = n - 1; i >= k1; i--)
+	{
+		if (i > k2)  m = 4;
+		if (i == k2) m = 3;
+		if ((i < k2) && (i > k1)) m = 2;
+		if (i == k1) m = 1;
+		f[i + m] = f[i];//сам сдвиг
+	}
+	f[k2 + 4] = f[k2 + 2] = f[k1 + 2] = f[k1] = 0;
+	cout << "\n";
+	for (i = 0; i < n + 4; cout << setw(4) << f[i++]);
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+
+// Убрать повторяющиеся элементы и уменьшить длину массива на их количество
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	int f[20], i, j, n = 10, k;
+	srand((unsigned)time(&t));
+	for (i = 0; i < n; f[i] = rand() % 5 - 2, cout << setw(4) << f[i++]);
+
+	cout << "\n\n";
+	
+	for (i = 0; i < n-1; i++)
+		for (j=i+1; j<n; j++)
+			if (f[j] == f[i])
+			{
+				for (k = j; k < n - 1; k++)
+					f[k] = f[k + 1];
+				n--;
+				j--;
+			}
+	
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+		return 0;
+}
+_______________________________________________________________________________________________________
+
+Вывод двух массивов один дольше другого объединение, продолжение
+
+#include <iostream>
+#include <iomanip>
+#include<time.h>
+
+using namespace std;
+
+int main(void)
+{
+	int A, B;
+	setlocale(LC_ALL, "Russian");
+	cout << "Введите размеры двух исходный массивов ";
+	cin >> A >> B;
+	int a[20], b[20], d[60];
+	int i = 0, j = 0, g = 0;
+	while (i < A) cout << setw(3) << (a[i] = i++);
+	cout << "\n";
+	i = 0;
+	while (i < B) cout << setw(3) << (b[i] = 20 + i++);
+	cout << "\n";
+	i = j = 0;
+	while (g < A + B)
+	{
+		if (i < A) d[g++] = a[i++];
+		if (j < B) d[g++] = b[j++];
+	}
+	g = 0;
+	while (g < A + B) cout << setw(3) << d[g++];
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+
+// сортировка массива
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+ void main()
+{
+	time_t t;
+	int f[20], i, n, j, k;
+	setlocale(LC_ALL, "Russian");
+	system("color 0F");
+	srand((unsigned)time(&t));
+	cout << "\nВведите размер массива ";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << ("\nИсходный массив\n");
+	
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	
+	for (i = 1; i < n - 1; i++)
+
+		for (j = 0; j < n - i; j++)
+
+			if (f[j] > f[j + 1]) swap(f[j], f[j + 1]);
+
+	cout << "\n";
+
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	
+	//return 0;
+}_______________________________________________________________________________________________________
+
+// сортировка массива - / +
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+ void main()
+{
+	time_t t;
+	int f[20], i, n, j, k, q;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	cout << "\nВведите размер массива ";
+	cin >> n >> q;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << ("\nИсходный массив\n");
+	
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	
+	for (i = 1; i < n - 1; i++)
+
+		for (j = 0; j < n - i; j++)
+
+	if ((f[j] - f[j + 1]) * q > 0)
+		swap(f[j], f[j + 1]);
+
+	cout << "\n";
+
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	
+	//return 0;
+}
+_______________________________________________________________________________________________________
+
+
+// Удалить элементы, расположенные между экстремальными элементами
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	int f[20], i, n, max = -1000, min = 1000, imax, imin, j = -1;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	cout << "\nВведите размер массива ";
+	cin >> n;
+	// Заполнение массивов
+	for (i = 0; i < n; f[i] = rand() % 100 - 50, i++);
+	// Печать массива исходного
+	cout << ("\nИсходный массив\n");
+	for (i = 0; i < n; cout << setw(4) << f[i++]);
+	for (i = 0; i < n; i++)
+	{
+		if (f[i] > max) max = f[imax = i];
+		if (f[i] < min) min = f[imin = i];
+	}
+	for (i = 0; i < n; i++)
+		if ((i - imax) * (i - imin) >= 0) f[++j] = f[i];
+	cout << "\nЭкстремальные элементы " << max << " " << min;
+	cout << "\nМассив после удаления элементов, расположенных между экстремальными \n";
+	for (i = 0; i <= j; cout << setw(4) << f[i++]);
+	return 0;
+}
+
+_______________________________________________________________________________________________________
+
+сдвиг массива на заданную цифру
+
+#include <iostream>
+using namespace std;
+int main() {
+    int k;
+    const int size = 10;
+    int arr[size] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    int a = arr[0];
+    setlocale(LC_ALL, "Russian");
+    cout << endl << "Введите количество элементов сдвига:  ";
+
+    cin >> k;
+
+    cout << endl << "Сдвиг на   " << k << "     элементов \n \n ";
+
+    for (int i = 0; i < size; i++) {
+        if (i == size - k) {
+            arr[i] = a;
+            break;
+        }
+        arr[i] = arr[i + k];
+    }
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+_______________________________________________________________________________________________________
+
+// Циклический сдвиг массива влево/вправо.
+
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	time_t t;
+	int n, i, mas[20], ch, r, flag;
+	setlocale(LC_ALL, "Russian");
+	srand((unsigned)time(&t));
+	cout << "\nВведите разм. мас., кол-во сдвиг. эл-тов и направ. сдвига 1/0 R/L ";
+	cin >> n >> ch >> flag;
+	for (i = 0; i < n; cout << setw(4) << mas[i++])
+		mas[i] = i;
+	cout << "\n";
+	if (!flag)
+		for (int j = 0; j < ch; mas[n - 1] = r, j++)
+			for (i = 0, r = mas[0]; i < n; mas[i] = mas[i + 1], i++);
+	else
+		for (int j = 0; j < ch; mas[0] = r, j++)
+			for (r = mas[n - 1], i = n - 1; i > 0; mas[i] = mas[i - 1], i--);
+	for (i = 0; i < n; cout << setw(4) << mas[i++]);
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Удалить строку с максимальным элементом массива
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int f[20][20], i, n, j, m, max1 = -32768, imax, ii;
+	srand((unsigned)time(&t));
+	cout << "\nВведите размеры матрицы ";
+	cin >> n >> m;
+	// Заполнение массивов
+	for (i = 0; i<n; i++)
+		for (j = 0; j<m; j++)
+			f[i][j] = rand() % 20 - 10;
+	// Печать массива исходного
+	for (i = 0; i<n; i++)
+		for (cout << ("\n"),j = 0; j<m; j++)
+			cout << setw(3) << f[i][j];
+
+	for (i = 0; i<n; i++)
+		for (j = 0; j<m; j++)
+			if (f[i][j]>max1) max1 = f[imax = i][j];
+	cout << "\n";
+	
+	for (i = 0, ii = -1; i<n; i++)
+	{
+		if (i == imax) continue;
+		for (j = 0, ++ii; j<m; j++)
+			f[ii][j] = f[i][j];
+	}
+
+	// Печать массива полученного
+	for (i = 0; i <= ii; i++)
+		for (cout << ("\n"),j = 0; j<m; j++)
+			cout << setw(3) << f[i][j];
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Удалить строку и столбец с максимальным элементом
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int f[20][20], i, n, j, m, max = 0, min = 0, imax, jmax, imin, jmin, i1, j1;
+	srand((unsigned)time(&t));
+	cout << "\nВведите размеры матрицы ";
+	cin >> n >> m;
+	// Заполнение массивов
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			f[i][j] = rand() % 200 - 100;
+	// Вывод полученного массива
+	cout << "\nмассив полученный\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; j++)
+			cout << setw(3) << f[i][j];
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			if (f[i][j] > max)
+				max = f[imax = i][jmax = j];
+	cout << "\n";
+	cout << max;
+	for (i1 = i = 0; i < n; i++)
+		if (i != imax)
+		{
+			for (j1 = j = 0; j < m; j++)
+				if (j != jmax)
+					f[i1][j1++] = f[i][j];
+			i1++;
+		}
+	cout << "\nмассив полученный\n";
+	for (i = 0; i < n - 1; i++)
+		for (cout << "\n", j = 0; j < m - 1; j++)
+			cout << setw(3) << f[i][j];
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Удалить строку и столбец с максимальным элементом
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	system("cls"); // очистка экрана
+	setlocale(LC_ALL, "Russian"); // обеспечит вывод кириллицей 866
+	system("color 0F"); // определяет цвет фона и текста (старшая и младшая 16-ти ричная-цифра)
+	time_t t;
+	int f[20][20], i, n, j, m, max = 0, min = 0, imax, jmax, imin, jmin, i1, j1;
+	srand((unsigned)time(&t));
+	cout << "\nВведите размеры матрицы ";
+	cin >> n >> m;
+	// Заполнение массивов
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			f[i][j] = rand() % 200 - 100;
+	// Вывод полученного массива
+	cout << "\nмассив полученный\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; j++)
+			cout << setw(3) << f[i][j];
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			if (f[i][j] > max)
+				max = f[imax = i][jmax = j];
+	cout << "\n";
+	cout << max;
+	// удаление строки и столбца с экстрмальными элементоми
+	for (i1 = i = 0; i < n; i++)//i1 - индекс строки в которую пишем, i откуда берём
+		if (i != imax)
+		{
+			for (j1 = j = 0; j < m; j++)//j1 - индекс столбца в которую пишем
+				if (j != jmax)
+					f[i1][j1++] = f[i][j];
+			i1++;//это движение по строке, т.к. надот увеличить один раз, тк это цикл по j
+			//идём по строке не являющейся imax и переписываем элты этой строки удаляем эелмент кот отвечает столбцу с максимумом 
+		}
+	cout << "\nмассив полученный\n";
+	for (i = 0; i < n - 1; i++)//потому что на 1 строку меньше
+		for (cout << "\n", j = 0; j < m - 1; j++)//потому что на 1 столбец меньше
+			cout << setw(3) << f[i][j];
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+
+
+// Удалить строку и столбец с максимальным элементом
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int f[20][20], i, n, j, m, max = 0, min = 0, imax, jmax, imin, jmin, i1, j1, ii, jj;
+	srand((unsigned)time(&t));
+	cout << "\nВведите размеры матрицы ";
+	cin >> n >> m;
+	// Заполнение массивов
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			f[i][j] = rand() % 200 - 100;
+	// Вывод полученного массива
+	cout << "\nмассив полученный\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; j++)
+			cout << setw(3) << f[i][j];
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+		{
+			if (f[i][j] > max)
+				max = f[imax = i][jmax = j];
+			if (f[i][j] < min)
+				min = f[imin = i][jmin = j];
+		}
+	cout << "\n";
+	cout << max;
+	
+	// удаление строки и столбца с экстрмальными элементоми
+	
+		for (i = 0, ii = -1;i < n;i++)
+		{
+			if ((i == imax) || (i == imin)) continue;
+			for (j = 0, ++ii;j < m;j++)
+				f[ii][j] = f[i][j];
+		}
+
+		for (j = 0, jj = -1;j < m;j++)
+		{
+			if ((j == jmax) || (j == jmin)) continue;
+			for (i = 0, ++jj;i <=ii;i++)
+				f[i][jj] = f[i][j];
+		}
+
+
+	cout << "\nмассив полученный\n";
+	for (i = 0; i <=ii; i++)
+		for (cout << "\n", j = 0; j <=jj; j++)
+			cout << setw(3) << f[i][j];
+	return 0;
+	
+}
+_______________________________________________________________________________________________________
+
+
+//удалить все четные строки и нечетные столбцы
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int f[20][20], i, n, j, m, max = 0, min = 0, imax, jmax, imin, jmin, i1, j1, ii, jj;
+	srand((unsigned)time(&t));
+	cout << "\nВведите размеры матрицы ";
+	cin >> n >> m;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			f[i][j] = rand() % 200 - 100;
+	cout << "\nмассив полученный\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; j++)
+			cout << setw(3) << f[i][j];
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+		{
+			if (f[i][j] > max)
+				max = f[imax = i][jmax = j];
+			if (f[i][j] < min)
+				min = f[imin = i][jmin = j];
+		}
+	cout << "\n";
+	//cout << max;
+	
+	// удаление строки и столбца с экстрмальными элементоми
+	
+		for (i = 0, ii = -1;i < n;i++)
+		{
+			if (i %2 !=0) continue;
+			for (j = 0, ++ii;j < m;j++)
+				f[ii][j] = f[i][j];
+		}
+
+		cout << "\nмассив с сокращённым столбцом\n";
+		for (i = 0; i <= ii; i++)
+			for (cout << "\n", j = 0; j < m; j++)
+				cout << setw(3) << f[i][j];
+		for (j = 0, jj = -1;j < m;j++)
+		{
+			if (j %2 == 0) continue;
+			for (i = 0, ++jj;i <=ii;i++)
+				f[i][jj] = f[i][j];
+		}
+
+	cout << "\nмассив полученный\n";
+	for (i = 0; i <=ii; i++)//потому что на 1 строку меньше
+		for (cout << "\n", j = 0; j <=jj; j++)//потому что на 1 столбец меньше
+			cout << setw(3) << f[i][j];
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+
+//удалить все четные строки и нечетные столбцы
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int f[20][20], i, n, j, m, max = 0, min = 0, imax, jmax, imin, jmin, i1, j1, ii, jj;
+	srand((unsigned)time(&t));
+	cout << "\nВведите размеры матрицы ";
+	cin >> n >> m;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			f[i][j] = rand() % 200 - 100;
+	cout << "\n Исходный массив:\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; j++)
+			cout << setw(3) << f[i][j];
+	//-------------------------------------------------------------------------
+	//Ищем максимальный и минимальный элементы
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+		{
+			if (f[i][j] > max)
+				max = f[imax = i][jmax = j];
+			if (f[i][j] < min)
+				min = f[imin = i][jmin = j];
+		}
+	cout << "\n";
+	cout << max;
+	//-------------------------------------------------------------------------
+	
+// удаление чётных строк
+		for (i = 0, ii = -1;i < n;i++)
+		{
+			if (i %2 ==0) continue;
+			for (j = 0, ++ii;j < m;j++)
+				f[ii][j] = f[i][j];
+		}
+//печать массива с удалёнными чётными строкам
+		cout << "\n\n Массив с удалёнными чётными строками:\n";
+		for (i = 0; i <= ii; i++)//потому что на 1 строку меньше
+			for (cout << "\n", j = 0; j < m; j++)//потому что на 1 столбец меньше
+				cout << setw(3) << f[i][j];
+		
+//удаление нечётных столбцов
+		for (j = 0, jj = -1;j < m;j++)
+		{
+			if (j %2 !=0) continue;//если столбец нечётный, то мы его не переписываем
+			for (i = 0, ++jj;i <=ii;i++)//jj индекс последнего переписываемого столбца, ii уже новый массив без чётных строк
+				f[i][jj] = f[i][j];
+		}
+
+//печать массива с удалёнными нечётными столбцами
+	cout << "\n\n Массив с удалёнными нечётными столбцами: \n";
+	for (i = 0; i <=ii; i++)//потому что на 1 строку меньше
+		for (cout << "\n", j = 0; j <=jj; j++)//потому что на 1 столбец меньше
+			cout << setw(3) << f[i][j];
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+
+// Вычисление суммы элементов матрицы по строкам и столбцам.
+// Заполнение, вывод и подсчет всех сумм в одном двойном цикле.
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int i, j, n, a[20][20], s, m;
+	srand((unsigned)time(&t));
+	cout << "Введи размер массива ";
+	cin >> n >> m;
+	for (i = 0; i <= n; i++)
+	{
+		for ((i < n) ? cout << ("\n") : cout << ("\n\n"), j = s = 0; j < m; j++)
+		{
+			if (i < n)
+			{
+				s += a[i][j] = rand() % 20 - 10;//сумма строки. потом s обнуляется и подсчитфывается сумма следующей строки
+				cout << setw(4) << a[i][j];
+				(i) ? (a[n][j] += a[i][j]) : (a[n][j] = a[i][j]);
+			}
+			else
+				cout << setw(4) << a[n][j]; 
+		cout << setw(6) << s;
+	}
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+
+// Окружить строки с экстремумами строками строками с нулями
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int i, j, n, m, f[20][20], max, min, imax, imin, k1, k2, nn;
+	srand((unsigned)time(&t));
+	cout << "Введи размер массива ";
+	cin >> n >> m;
+	for (i = 0; i < n; f[i][j] = rand() % 100, i++);
+
+	for (i = 0; i < n; i++)
+	{
+		if (f[i][j] > max) max = f[imax = i][j];
+		if (f[i][j] < min) min = f[imin = i][j];
+	}
+
+	k1 = imax;
+	k2 = imin;
+	if (imax > imin) { k2 = imax; k1 = imin; }
+
+	for (i = n - 1; i >= k1; i--)
+	{
+		if (i > k2) nn = 4;
+		if (i == k2) nn = 3;
+		if (i > k1 && i < k2) nn = 2;
+		if (i == k1) nn = 1;
+		if (k1 == k2) nn = 1;
+		for (j = 0; j < m; j++)		
+			f[i + nn][j] = f[i][j];
+	}
+	for (j = 0; j > m; j++)
+	f[k2 + 1][j] = f[k2 - 1][j] = f[k1 + 1][j] = f[k1 - 1][j] = 0;
+
+	cout << "\n";
+
+	for (i = 0; i < n + 4; cout << setw(4) << f[i++][j++]);
+
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Окружить строку с максимумом и минимумом с двух сторон строкой с нулями.
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int i, j, n, m, b[20][20], max = -32768, imax, k = 2, min = 32767, imin, m1, m2, k1 = 2;
+	srand((unsigned)time(&t));
+	cout << "введите размер матрицы ";
+	cin >> n >> m;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; b[i][j++] = rand() % 50 - 25);
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n; i++)
+		for (cout << ("\n"), j = 0; j < m; cout << setw(4) << b[i][j++]);
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+		{
+			(max < b[i][j]) ? (max = b[imax = i][j]) : (0);
+			(min > b[i][j]) ? (min = b[imin = i][j]) : (0);
+		}
+	cout << "\n" << max << " " << min;
+	m1 = imax;
+	m2 = imin;
+	if (m1 != m2) k1 = k += 2;
+	if (m1 > m2)
+	{
+		m1 = imin;
+		m2 = imax;
+	}
+	for (i = n - 1; i > m2; i--)
+		for (j = 0; j < m; j++)
+			b[i + k][j] = b[i][j];
+	for (j = 0; j < m; j++)
+		b[m2 + k - 1][j] = b[m2][j];
+	for (j = 0; j < m; j++)
+		b[m2 + k - 2][j] = b[m2 + k][j] = 0;
+	if (k == 4)
+	{
+		k = 2;
+		for (i = m2 - 1; i > m1; i--)
+			for (j = 0; j < m; j++)
+				b[i + k][j] = b[i][j];	
+		for (j = 0; j < m; j++)
+			b[m1 + k - 1][j] = b[m1][j];
+		for (j = 0; j < m; j++)
+			b[m1][j] = b[m1 + 2][j] = 0;
+	}
+	// Вывод массива
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n + k1; i++)
+		for (cout << "\n", j = 0; j < m; cout << setw(4) << b[i][j++]);
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Получить сумму цифр двух диагоналей
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int i, j, n, m, f[20][20], s=0, s2=0;
+	srand((unsigned)time(&t));
+	// Заполнение массивов
+	cout << "введите размер матрицы ";
+	cin >> n >> m;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; f[i][j++] = rand() % 50 - 25);
+	//b[3][2] = -40;
+	//b[3][4] = 40;
+	// Печать массивов
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n; i++)
+		for (cout << ("\n"), j = 0; j < m; cout << setw(4) << f[i][j++]);
+	
+	for (i = 0; i < n; i++)
+		s += f[i][i] + f[i][n - 1 - i];
+	if (n % 2) s -= f[(n - 1) / 2][(n - 1) / 2];
+	cout << "\n\nСумма значений двух диагоналей:	" << s<< endl;
+		
+	return 0;
+}
+
+_______________________________________________________________________________________________________
+
+// Отсортировать матрицу по первому элементу строки
+
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	time_t t;
+	int i, j, n=5, m=3, b[20][20], q=1, k, l, s;
+	srand(time(NULL));
+	//cout << "\nвведите размер матрицы и признак сортировки 1/-1 ";
+	//cin >> n >> m >> q;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; b[i][j++] = rand() % 50 - 25);
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; cout << setw(4) << b[i][j++]);
+	// собственно сортировка матрицы по первому элементу строки
+	for (k = n - 1; k >= 0; k--)
+		for (l = 0; l < k; l++)
+			if (((b[l][0] - b[l + 1][0]) * q) > 0)
+				for (j = 0; j < m; j++)
+					swap(b[l][j], b[l + 1][j]);
+	cout << "\nУпорядоченный массив";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; cout << setw(4) << b[i][j++]);
+	return 0;
+}
+_______________________________________________________________________________________________________
+
+// Заполнение периферии матрицы единицами. Всё остальное нули.
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	int i, j, n, m, b[20][20], kn;
+	// Заполнение массивов
+	cout << "\nвведите размер матрицы ";
+	cin >> n >> m;
+	for (kn = 0; kn < (n + 1) / 2; kn++)
+		for (i = kn; i < n - kn; i++)//по строкам, не от 0 а от kn, а kn идёт от нуля, позже начинаем и раньше закончим (n-kn)
+			for (j = kn; j < m - kn; j++)//по столбцам
+				b[i][j] = kn + 1;//при kn=0 всяматрица заполняется единицами
+	//i меняется от  1 и заканчивается раньше
+	// Печать массива
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; cout << setw(2) << b[i][j++]);
+	return 0;
+}
+
+_______________________________________________________________________________________________________
+
+// Горизонтальная змейка.
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	int i, j, n, m, b[20][20], k=0;
+	// Заполнение массивов
+	cout << "\nвведите размер матрицы ";
+	cin >> n >> m;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			if (i % 2 == 0) b[i][j] = k++;
+			else b[i][m - 1 - j] = k++;
+	// Печать массива
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; cout << setw(3) << b[i][j++]);
+	return 0;
+}_______________________________________________________________________________________________________
+
+// Вертикальная змейка.
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian"); 
+	system("color 0F"); // определяет цвет фона и текста (старшая и младшая 16-ти ричная-цифра)
+	int i, j, n, m, b[20][20], k=0;
+	// Заполнение массивов
+	cout << "\nвведите размер матрицы ";
+	cin >> n >> m;
+	for (j = 0; j < m; j++)
+		for (i = 0; i < n; i++)
+			if (j % 2 == 0) b[i][j] = k++;
+			else b[n - 1 - i][j] = k++;
+	// Печать массива
+	cout << "\nДвумерный массив";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < m; cout << setw(3) << b[i][j++]);
+	return 0;
+}
+
+_______________________________________________________________________________________________________
+
+// Заполнение квадратной матрицы числами от 1 по наклонной змейке.
+// Идея в том, пишу в последовательность элементов
+// с равными суммами обоих индексов. 
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	setlocale(LC_ALL, "Russian"); 
+	int a[20][20], i, j, n, l = 1, v;
+	cout << "\nВведи размер квадратной матрицы ";
+	cin >> n;
+	for (v = 0; v < 2 * n; v++)// v это номер диагонали и сумма индексов одновременно
+		for (i = 0; i < n; i++)
+			for (j = 0; j < n; j++)//l значение диагональной змейки что мы записываем
+				if (i + j == v)//сначала для v = 0 только один раз истина
+					(v % 2) ? (a[i][j] = l++) : (a[j][i] = l++);
+	for (i = 0; i < n; i++)//перейдём только когда окончатся 19 и 20 и 21 циклы
+		for (cout << "\n", j = 0; j < n; cout << setw(4) << a[i][j++]);
+	return 0;
+}
+
+
+_______________________________________________________________________________________________________
+
+// Заполнение квадратной матрицы числами от 1 по наклонной змейке.
+// Идея в том, пишу в последовательность элементов
+// с равными суммами обоих индексов.
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(void)
+{
+	int a[20][20], i, j, n, m=5, l = 1, v, k;
+i = 0;
+k = 1;
+for (j = 0; j <= m - 1; j++)
+a[i][j] = k++;
+
+	// Печать массива исходного
+	cout << ("\nИсходный массив\n");
+for (j = 0; j < m; cout << setw(4) << a[i] [j++]);
+return 0;
+}
+
+
+_______________________________________________________________________________________________________// FUN184.CPP
+
+______________________________________________________________________________________________________________
+
+// Заполнение квадратной матрицы - Улитка
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main(void)
+{
+	setlocale(LC_ALL, "Russian");
+	int n, i, z, b[20][20], j, k = 1;
+	cout << "\nВведите размер ";
+	cin >> n;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < n; j++)
+			b[i][j] = 0;
+	cout << "\nМассив первоначальный\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < n; j++)
+			cout << setw(3) << b[i][j];
+
+	for (i = 0; i < n / 2 + n % 2; i++)
+	{
+		for (z = i; z < n - i; b[i][z++] = k++);
+		
+		for (z = i + 1; z < n - i; b[z++][n-1-i] = k++);
+
+		for (z = n-2-i; z >= i; b[n-1-i][z--] = k++);
+
+		for (z = n - 2 - i; z > i; b[z--][i] = k++);
+	}
+
+	cout << "\n\nМассив улитка\n";
+	for (i = 0; i < n; i++)
+		for (cout << "\n", j = 0; j < n; j++)
+			cout << setw(3) << b[i][j];
+	return 0;
+}
